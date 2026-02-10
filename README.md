@@ -15,13 +15,38 @@
 
 ## 📖 Table of Contents
 
+- [Integration Points](#integration-points) - How everything connects
 - [Component Documentation](#component-documentation) - Deep-dives into each system
 - [Key Architectural Insights](#key-architectural-insights) - Design patterns and decisions
-- [Integration Points](#integration-points) - How everything connects
 - [Why It's Going Viral](#why-its-going-viral) - Real-world impact
 - [Performance Summary](#performance-summary) - Technical metrics
 
-**Recommended reading order:** Start with [Integration Points](#integration-points) to see the big picture, then read components 01-07 in order.
+---
+
+## Integration Points
+
+```
+User Message → Channel Plugin
+    ↓
+Gateway (WebSocket RPC server)
+    ↓
+Inbound Handler
+    ├─ System Event Enqueue
+    └─ Heartbeat Wake Request
+         ↓
+    Cron Scheduler Timer
+    ├─ Finds due jobs
+    └─ Enqueues job execution
+         ↓
+    Command Lane (Serializes)
+    ├─ Runs Pi Agent (main or isolated)
+    ├─ Tool execution (via Skills)
+    └─ Result handling
+         ↓
+    Delivery System
+    ├─ Channel-specific formatting
+    └─ Outbound send (WhatsApp, Slack, etc)
+```
 
 ---
 
@@ -213,33 +238,6 @@ Failover between API keys/OAuth profiles with cooldown prevents rate limits.
 ### 7. Session Isolation
 
 Cron jobs can run in isolated ephemeral sessions, separate from main conversation.
-
----
-
-## Integration Points
-
-```
-User Message → Channel Plugin
-    ↓
-Gateway (WebSocket RPC server)
-    ↓
-Inbound Handler
-    ├─ System Event Enqueue
-    └─ Heartbeat Wake Request
-         ↓
-    Cron Scheduler Timer
-    ├─ Finds due jobs
-    └─ Enqueues job execution
-         ↓
-    Command Lane (Serializes)
-    ├─ Runs Pi Agent (main or isolated)
-    ├─ Tool execution (via Skills)
-    └─ Result handling
-         ↓
-    Delivery System
-    ├─ Channel-specific formatting
-    └─ Outbound send (WhatsApp, Slack, etc)
-```
 
 ---
 

@@ -15,36 +15,13 @@
 
 ## 📖 Table of Contents
 
-- [How to Use This Repository](#how-to-use-this-repository)
-- [Component Documentation](#component-documentation)
-- [Key Architectural Insights](#key-architectural-insights)
-- [Integration Points](#integration-points)
-- [Why It's Going Viral](#why-its-going-viral)
-- [Performance Summary](#performance-summary)
+- [Component Documentation](#component-documentation) - Deep-dives into each system
+- [Key Architectural Insights](#key-architectural-insights) - Design patterns and decisions
+- [Integration Points](#integration-points) - How everything connects
+- [Why It's Going Viral](#why-its-going-viral) - Real-world impact
+- [Performance Summary](#performance-summary) - Technical metrics
 
----
-
-## 🧭 How to Use This Repository
-
-**Choose your path based on what interests you:**
-
-### 🎯 I want to understand how OpenClaw works end-to-end
-**Start here:** [Integration Points](#integration-points) → Read components in order (01-07)
-
-### ⚡ I'm interested in the automation/scheduling
-**Read:** [01-cron-scheduler.md](01-cron-scheduler.md) → [04-heartbeat-system.md](04-heartbeat-system.md)
-
-### 🤖 I want to know about the AI agent execution
-**Read:** [02-pi-agent-runtime.md](02-pi-agent-runtime.md) → [03-skills-system.md](03-skills-system.md)
-
-### 🔌 I'm curious about the communication layer
-**Read:** [05-gateway-websocket.md](05-gateway-websocket.md) → [07-command-lanes-sessions.md](07-command-lanes-sessions.md)
-
-### 💻 I want to deploy my own always-on agent
-**Read:** [06-daemon-service.md](06-daemon-service.md) → [Why It's Going Viral](#why-its-going-viral)
-
-### 🏗️ I'm an architect wanting to study the design patterns
-**Read:** [Key Architectural Insights](#key-architectural-insights) → Dive into specific components
+**Recommended reading order:** Start with [Integration Points](#integration-points) to see the big picture, then read components 01-07 in order.
 
 ---
 
